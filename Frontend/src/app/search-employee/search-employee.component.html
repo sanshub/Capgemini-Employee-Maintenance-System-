@@ -1,0 +1,59 @@
+<br>
+<div class="container">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="" (click)="home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav><br><br>
+
+
+<div class="container">
+  <div class="dropdown center-block">
+    <div class="form-group">
+      <select [(ngModel)]="this.genre" class="form-control">
+        <option selected="selected" value="all">All</option>
+        <option value="gender">Gender</option>
+        <option value="department">Department</option>
+        <option value="maritalstatus">Marital Status</option>
+      </select>
+      <input type="text" [(ngModel)]="this.searchField" class="form-control">
+      <button (click)="onSubmit()" class="btn btn-primary">Search</button>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <label>
+    <h4>Search Result</h4>
+  </label>
+  <table class="table  table-hover">
+    <thead>
+
+      <tr>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Joining Date</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td> {{employee.firstName}} </td>
+        <td> {{employee.designation}} </td>
+        <td> {{employee.dateOfJoining}} </td>
+        <td> {{employee.dateOfBirth}} </td>
+        <td> {{employee.address}} </td>
+        <td> {{employee.phoneNumber}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

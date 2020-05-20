@@ -1,0 +1,144 @@
+<br><div class="container">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="" (click)="home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav><br><br>
+
+<div class="heading" style="text-align:center">
+  <h1>
+    Employee Registration System!
+  </h1>
+  <br>
+</div>
+
+<div class="container">
+
+  <form (ngSubmit)="saveEmployee(); addForm.reset()" #addForm=ngForm class="needs-validation" >
+    
+    <div class="form-group">
+      <label>First name : </label>
+      <input class="form-control" type="text" [(ngModel)]="emp.firstName" name="firstName" required placeholder="Enter Employee's First name" pattern="[A-Z][A-Za-z]{2,}"
+        #firstName=ngModel>
+      <div *ngIf="firstName.invalid && firstName.touched && firstName.dirty" class="alert alert-danger">First letter must be capital! Firstname must me minimum 3 characters long</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Last name : </label>
+      <input class="form-control" type="text" [(ngModel)]="emp.lastName" name="lastName" required placeholder="Enter Employee's Last name" pattern="[A-Z][A-Za-z]{2,}"
+        #lastName=ngModel>
+      <div *ngIf="lastName.invalid && lastName.touched && lastName.dirty" class="alert alert-danger">First letter must be capital! Lastname must me minimum 3 characters long</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Date Of Birth : </label>
+      <input class="form-control" type="date" [(ngModel)]="emp.dateOfBirth" name="dateOfBirth" required placeholder="Enter Employee's Date Of birth" 
+        #dateOfBirth=ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Date Of Joining : </label>
+      <input class="form-control" type="date" [(ngModel)]="emp.dateOfJoining" name="dateOfJoining" required placeholder="Enter Employee's Date Of joining" 
+        #dateOfJoining=ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Email Id : </label>
+      <input class="form-control" [(ngModel)]="emp.email" name="email" required placeholder="Enter Employee's Email Id" 
+      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email=ngModel>
+      <div *ngIf="email.invalid && email.touched && email.dirty" class="alert alert-danger">Eg : abcd@domain.xyz</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Phone number : </label>
+      <input class="form-control" [(ngModel)]="emp.phoneNumber" name="phoneNumber" required placeholder="Enter Employee's Phone number" pattern="[7-9][0-9]{9}"
+        #phoneNumber=ngModel>
+      <div *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.dirty" class="alert alert-danger">Phone number must have 10 digits starting from 7, 8 or 9</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Manager's Id :</label>
+      <input class="form-control" [(ngModel)]="emp.managerId" name="managerId" required placeholder="Enter Employee Manager's Id" pattern="[1-9][0-9]{5}" #managerId=ngModel>
+      <div *ngIf="managerId.dirty && managerId.touched && managerId.invalid" class="alert alert-danger">Manager's Id must be 6 digits long</div>
+    </div>
+
+
+    <div class="form-group">
+      <label>Marital status : </label>
+      <select name="maritalStatus" id="maritalStatus" [(ngModel)]="emp.maritalStatus" required #maritalStatus=ngModel>
+        <option value="single" selected>Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+        <option value="separated">Separated</option>
+        <option value="widowed">Widowed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Gender : </label>
+        <input type="radio" id="male" name="gender" [(ngModel)]="emp.gender" #gender=ngModel value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" [(ngModel)]="emp.gender" #gender=ngModel value="female">
+      <label for="female">Female</label><br>
+    </div>
+
+    <div class="form-group">
+      <label>Designation : </label>
+      <input class="form-control" type="text" [(ngModel)]="emp.designation" name="designation" required placeholder="Enter Designation" pattern="[A-Z][A-Za-z]{2,50}"
+        #firstName=ngModel>
+      <div *ngIf="firstName.invalid && firstName.touched && firstName.dirty" class="alert alert-danger">First letter must be capital! Designation must me minimum 3 characters long</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Department name : </label>
+      <select name="department" id="department" [(ngModel)]="emp.department" required #department=ngModel>
+        <option selected>SAP</option>
+        <option>Network</option>
+        <option>Cloud</option>
+        <option>Security</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Address : </label>
+      <input class="form-control" type="text" [(ngModel)]="emp.address" name="address" placeholder="Enter Address" #address=ngModel>
+    </div>
+
+    <div class="form-group">
+      <label>Password : </label>
+      <input class="form-control" type="password" [(ngModel)]="emp.password" name="password" required placeholder="Enter Employee's password" pattern="[A-Za-z0-9]{4,}"
+        #password=ngModel>
+      <div *ngIf="password.invalid && password.touched && password.dirty" class="alert alert-danger">Password must me minimum 4 characters long</div> 
+    </div>
+
+    <div class="form-group">
+      <label>Salary :</label>
+      <input class="form-control" [(ngModel)]="emp.salary" name="salary" required placeholder="Enter Employee's Salary" #salary=ngModel>
+      <div *ngIf="salary.dirty && salary.touched && salary.invalid" class="alert alert-danger">Salary must be 6 digits long</div>
+    </div>
+
+    <div class="form-group">
+      <label>Grade : </label>
+      <select name="grade" id="grade" [(ngModel)]="emp.grade" required #grade=ngModel>
+        <option selected>M1</option>
+        <option>M2</option>
+        <option>M3</option>
+        <option>M4</option>
+        <option>M5</option>
+        <option>M6</option>
+        <option>M7</option>
+      </select>
+    </div>
+
+
+
+    <button type="submit" [disabled]=!addForm.valid class="btn btn-outline-success">Add Employee</button>
+
+  </form>
+
+</div>
